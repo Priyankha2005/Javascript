@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+let unit=800;
+let bill
+
+if(unit<=100){
+    bill=0;
+      console.log("free");                          
+}
+else if(unit<=200){
+    bill=(unit-100)*2;
+    console.log(bill);
+}
+else if(unit<=300){
+    bill=(100*2)+(unit-200)*3;
+    console.log(bill);
+}
+  else if(unit<=400){
+    bill=(100*2)+(100*3)+(unit-300)*4;
+    console.log(bill);
+}
+ else{
+    console.log("commercial use only");
+} 
+</script>
+</body>
+</html>
