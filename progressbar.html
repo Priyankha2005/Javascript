@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <input type="number" id="inp">
+  <button onclick="fun()">Submit</button>
+
+  <div id="progressContainer">
+    <div id="progressBar">0%</div>
+  </div>
+
+  <script>
+    let container = document.getElementById("progressContainer");
+    container.style.width = "1400px";
+    container.style.backgroundColor = "rgb(211, 227, 253)";
+    container.style.height = "30px";
+    container.style.marginTop = "20px";
+
+    let bar = document.getElementById("progressBar");
+    bar.style.height = "30px";
+    bar.style.backgroundColor = "green";
+    bar.style.textAlign = "center";
+    bar.style.color = "white";
+    
+    function fun() {
+      let value = document.getElementById("inp").value;
+      if (value >= 0 && value <= 100) {
+        bar.style.width = value + "%";
+        bar.textContent = value + "%";
+      }
+    }
+  </script>
+
+</body>
+</html>
