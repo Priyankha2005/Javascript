@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+<body>
+    <label>USERNAME:</label><input type="text" id="name"><br><br>
+    <label>DOB:</label><input type="date" id="dates"><br><br>
+    <button onclick="gen()">Genarate</button>
+</body>
+<script>
+    function gen(){
+  let name=document.querySelector('input').value
+//   console.log(name);
+  let a=name.slice(0,5)
+//   console.log(a);
+  let dates=document.getElementById('dates').value
+//   console.log(dates);
+  let b=dates.slice(0,4)
+//   console.log(b);
+  let c=a+b
+  console.log(c);
+ }
+</script>
+</html>
