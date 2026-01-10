@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="return saveData()">
+  <input id="name" placeholder="Name"><br><br>
+  <input id="phone" placeholder="Phone"><br><br>
+  <input id="city" placeholder="City"><br><br>
+  <button>Save</button>
+</form>
+
+<p id="show"></p>
+
+<script>
+function saveData() {
+  let data = {
+    name: name.value,
+    phone: phone.value,
+    city: city.value
+  };
+
+  localStorage.setItem("userData", JSON.stringify(data));
+
+  document.getElementById("show").innerText =
+    "Data Saved Successfully 💾";
+  return false;
+}
+</script>
+</body>
+</html>
