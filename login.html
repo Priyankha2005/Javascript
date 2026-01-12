@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Login Register</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      width: 280px;
+      box-shadow: 0 0 10px gray;
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+    }
+    button {
+      width: 100%;
+      padding: 8px;
+      background: blue;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .hide {
+      display: none;
+    }
+    p {
+      cursor: pointer;
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+
+  <!-- REGISTER -->
+  <div id="registerBox">
+    <h3>Register</h3>
+    <input type="text" id="rName" placeholder="Name">
+    <input type="email" id="rEmail" placeholder="Email">
+    <input type="password" id="rPassword" placeholder="Password">
+    <button onclick="register()">Register</button>
+    <p onclick="showLogin()">Already have account? Login</p>
+  </div>
+
+  <!-- LOGIN -->
+  <div id="loginBox" class="hide">
+    <h3>Login</h3>
+    <input type="email" id="lEmail" placeholder="Email">
+    <input type="password" id="lPassword" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p onclick="showRegister()">New user? Register</p>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="hide">
+    <h3 id="welcome"></h3>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+</div>
+
+<script>
+function showLogin() {
+  registerBox.classList.add("hide");
+  loginBox.classList.remove("hide");
+}
+
+function showRegister() {
+  loginBox.classList.add("hide");
+  registerBox.classList.remove("hide");
+}
+
+function register() {
+  let name = rName.value;
+  let email = rEmail.value;
+  let password = rPassword.value;
+
+  if (!name || !email || !password) {
+    alert("Fill all fields");
+    return;
+  }
+
+  localStorage.setItem("user", JSON.stringify({ name, email, password }));
+  alert("Registered Successfully");
+  showLogin();
+}
+
+function login() {
+  let email = lEmail.value;
+  let password = lPassword.value;
+
+  let user = JSON.parse(localStorage.getItem("user"));
+
+  if (user && user.email === email && user.password === password) {
+    loginBox.classList.add("hide");
+    dashboard.classList.remove("hide");
+    document.getElementById("welcome").innerText =
+      "Welcome " + user.name;
+  } else {
+    alert("Invalid Login");
+  }
+}
+
+function logout() {
+  dashboard.classList.add("hide");
+  showLogin();
+}
+</script>
+
+</body>
+</html>
