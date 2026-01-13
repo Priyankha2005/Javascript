@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Theme Changer</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      padding-top: 100px;
+      transition: 0.3s;
+    }
+
+    .dark {
+      background: #121212;
+      color: white;
+    }
+
+    .light {
+      background: #f2f2f2;
+      color: black;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Theme Changer</h2>
+  <button onclick="changeTheme()">Change Theme</button>
+
+<script>
+  // Page load time
+  let savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme) {
+    document.body.className = savedTheme;
+  } else {
+    document.body.className = "light";
+  }
+
+  function changeTheme() {
+    if (document.body.className === "light") {
+      document.body.className = "dark";
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.className = "light";
+      localStorage.setItem("theme", "light");
+    }
+  }
+</script>
+
+</body>
+</html>
