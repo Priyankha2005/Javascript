@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+<head>
+<title>Portfolio Builder</title>
+<style>
+body {
+  font-family: Arial;
+  background: #f4f4f4;
+  padding: 20px;
+}
+.container {
+  display: flex;
+  gap: 20px;
+}
+.form, .preview {
+  width: 50%;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px #ccc;
+}
+input, textarea, button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px;
+}
+.preview h2 {
+  color: #333;
+}
+.card {
+  background: #fafafa;
+  padding: 10px;
+  margin-top: 10px;
+  border-left: 4px solid #4caf50;
+}
+</style>
+</head>
+<body>
+
+<h2>🚀 Portfolio Builder</h2>
+
+<div class="container">
+
+  <!-- FORM -->
+  <div class="form">
+    <h3>Edit Portfolio</h3>
+
+    <input id="name" placeholder="Your Name">
+    <input id="role" placeholder="Your Role (Web Developer)">
+    <textarea id="bio" placeholder="Short Bio"></textarea>
+    <input id="skills" placeholder="Skills (comma separated)">
+    <textarea id="projects" placeholder="Projects (comma separated)"></textarea>
+
+    <button onclick="save()">Save Portfolio</button>
+    <button onclick="clearData()">Clear All</button>
+  </div>
+
+  <!-- PREVIEW -->
+  <div class="preview">
+    <h2 id="pName"></h2>
+    <h4 id="pRole"></h4>
+    <p id="pBio"></p>
+
+    <h3>Skills</h3>
+    <div id="pSkills"></div>
+
+    <h3>Projects</h3>
+    <div id="pProjects"></div>
+  </div>
+
+</div>
+
+<script>
+let data = JSON.parse(localStorage.getItem("portfolio")) || {};
+
+function save() {
+  data = {
+    name: name.value,
+    role: role.value,
+    bio: bio.value,
+    skills: skills.value.split(","),
+    projects: projects.value.split(",")
+  };
+  localStorage.setItem("portfolio", JSON.stringify(data));
+  render();
+}
+
+function render() {
+  pName.innerText = data.name || "";
+  pRole.innerText = data.role || "";
+  pBio.innerText = data.bio || "";
+
+  pSkills.innerHTML = "";
+  (data.skills || []).forEach(skill => {
+    pSkills.innerHTML += `<div class="card">${skill.trim()}</div>`;
+  });
+
+  pProjects.innerHTML = "";
+  (data.projects || []).forEach(project => {
+    pProjects.innerHTML += `<div class="card">${project.trim()}</div>`;
+  });
+}
+
+function clearData() {
+  localStorage.removeItem("portfolio");
+  location.reload();
+}
+
+render();
+</script>
+
+</body>
+</html>
+</body>
+</html>
