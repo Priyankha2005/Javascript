@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3 id="q"></h3>
+<button onclick="check(0)">Option A</button>
+<button onclick="check(1)">Option B</button>
+<p id="score"></p>
+
+<script>
+let questions = [
+ {q:"Capital of India?", options:["Delhi","Mumbai"], answer:0},
+ {q:"5+5?", options:["8","10"], answer:1}
+];
+
+let i=0, s=0;
+
+function load(){
+ q.innerText = questions[i].q;
+ document.querySelectorAll("button")[0].innerText = questions[i].options[0];
+ document.querySelectorAll("button")[1].innerText = questions[i].options[1];
+}
+function check(ans){
+ if(ans==questions[i].answer) s++;
+ i++;
+ i<questions.length ? load() : score.innerText="Score: "+s;
+}
+load();
+</script>
+</body>
+</html>
