@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <input id="item" placeholder="Item">
+<input id="price" placeholder="Price">
+<button onclick="add()">Add</button>
+<ul id="bill"></ul>
+
+<script>
+let total=0;
+function add(){
+ bill.innerHTML += `<li>${item.value} - ₹${price.value}</li>`;
+ total += Number(price.value);
+ document.body.innerHTML += `<h3>Total ₹${total}</h3>`;
+}
+</script> 
+</body>
+</html>
