@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<button onclick="quote()">Quote</button>
+<p id="q"></p>
+<script>
+let arr=["Be strong","Never give up","Success"];
+function quote(){
+ document.getElementById("q").innerText=
+ arr[Math.floor(Math.random()*arr.length)];
+}
+</script>
+</body>
+</html>
